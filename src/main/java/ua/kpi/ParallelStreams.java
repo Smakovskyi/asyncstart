@@ -1,6 +1,7 @@
 package ua.kpi;
 
-import com.sun.tools.javac.util.List;
+
+import java.util.List;
 
 public class ParallelStreams {
 
