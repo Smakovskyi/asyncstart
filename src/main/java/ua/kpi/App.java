@@ -1,6 +1,7 @@
 package ua.kpi;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
@@ -13,6 +14,8 @@ import java.util.concurrent.Future;
 public class App {
 
     public static void sayHelloWorld(){
+        CompletionStage completionStage;
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
