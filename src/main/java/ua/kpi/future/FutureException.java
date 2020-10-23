@@ -15,6 +15,7 @@ public class FutureException {
     } catch (InterruptedException e) {
       e.printStackTrace();
     } catch (ExecutionException e) {
+      System.out.println(e.getCause().getClass());
       System.out.println(e.getCause().getMessage());
     }
   }

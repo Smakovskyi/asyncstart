@@ -11,6 +11,7 @@ public class ThenCompose {
         .thenCompose( str -> CompletableFuture.supplyAsync(
             () -> str + " second"))
             .thenAccept(System.out::println);
+    result.join();
     System.out.println(result.isDone());
   }
 }

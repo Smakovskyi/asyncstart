@@ -12,5 +12,6 @@ public class ThenAcceptAsync {
         .thenApplyAsync(s -> s + " world!" + getThreadName())
         .thenAcceptAsync( res -> System.out.println(res + getThreadName()) );
     System.out.println(result.isDone());
+    result.join();
   }
 }

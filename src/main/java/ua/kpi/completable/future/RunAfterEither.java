@@ -8,8 +8,12 @@ public class RunAfterEither {
         .supplyAsync(() -> "first");
     CompletableFuture<String> second = CompletableFuture
         .supplyAsync( () -> "second");
-    CompletableFuture<Void> result = first
-        .runAfterEither(second, () -> System.out.println("Hello!"));
+    CompletableFuture<Void> result =
+        first.runAfterEitherAsync( first,  () -> System.out.println("Hello!" +
+        Thread.currentThread().getName()) );
+        //first.runAfterEither(second, () -> System.out.println("Hello!" +
+        //    Thread.currentThread().getName()));
     System.out.println(result.isDone());
+    result.join();
   }
 }

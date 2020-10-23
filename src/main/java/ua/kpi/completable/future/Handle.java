@@ -9,7 +9,8 @@ public class Handle {
         .supplyAsync(() -> {
           throw new RuntimeException("Error message");
         })
-        .handle((res, ex) -> res != null ? res : ex.getCause().getMessage());
+        .handle((res, ex) -> res != null ? res : ex.getCause().getMessage())
+        .thenApply( s ->s + "!!!!!" );
     System.out.println( errorMessage.get() );
   }
 

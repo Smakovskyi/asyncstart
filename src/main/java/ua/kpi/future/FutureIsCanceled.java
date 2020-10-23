@@ -7,9 +7,10 @@ public class FutureIsCanceled {
 
   public static void main(String[] args) throws Exception {
     Future<String> future = ForkJoinPool.commonPool().submit(()->"Hello");
-    Thread.sleep(100);
+    //Thread.sleep(100);
     boolean canceled = future.cancel(true);
     System.out.println(canceled);//returns true if future was canceled
+    System.out.println(future.get());
   }
 
 }

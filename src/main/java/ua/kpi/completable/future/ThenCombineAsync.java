@@ -2,18 +2,21 @@ package ua.kpi.completable.future;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ThenCombine {
+public class ThenCombineAsync {
 
   public static void main(String[] args) {
     CompletableFuture<String> first = CompletableFuture
         .supplyAsync(() -> "first");
     CompletableFuture<String> second = CompletableFuture
         .supplyAsync( () -> "second");
+    CompletableFuture<String> third = CompletableFuture
+        .supplyAsync( () -> "third");
     CompletableFuture<Void> result = first
-        .thenCombine( second, (f, s) -> f + " " + s)
-        .thenAccept(System.out::println);
+        .thenCombineAsync( second, (f, s) -> f + " " + s)
+        .thenCombineAsync( third, (f, s) -> f + " " + s)
+        .thenApplyAsync( String::toUpperCase )
+        .thenAcceptAsync(System.out::println);
     result.join();
     System.out.println(result.isDone());
   }
-
 }

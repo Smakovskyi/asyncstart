@@ -11,5 +11,7 @@ public class AnyOf {
         .supplyAsync( () -> "second");
     CompletableFuture<Object> result = CompletableFuture.anyOf(first, second);
     System.out.println(result.get());
+    System.out.println(first.isDone());
+    System.out.println(second.isDone());
   }
 }

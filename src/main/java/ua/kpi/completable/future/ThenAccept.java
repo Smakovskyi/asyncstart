@@ -8,7 +8,9 @@ public class ThenAccept {
     CompletableFuture<Void> result = CompletableFuture
         .supplyAsync(() -> "Hello")
         .thenApply(s -> s + " world!")
-        .thenAccept( res -> System.out.println(res) );
+        .thenApplyAsync(s -> s + " add smth." )
+        .thenAccept/*Async*/( res -> System.out.println(res + Thread.currentThread().getName()) );
+    //result.join();
     System.out.println(result.isDone());
   }
 }
